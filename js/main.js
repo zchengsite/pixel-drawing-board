@@ -1,5 +1,5 @@
 // 画布大小
-let gridLayoutWH = 600
+let gridLayoutWH = document.body.clientHeight - 100
 // 行列网格数
 let gridNum = 32
 // 单个网格宽高
@@ -25,6 +25,10 @@ let initGridList = []
 
 // 记录当前鼠标所在网格的x, y坐标点
 let currGridPosition = document.getElementsByClassName('curr-grid-position')[0]
+
+let canvasWrapper = document.getElementsByClassName('drawing-board-wrapper')[0]
+canvasWrapper.style.width = document.body.clientHeight - 100 +'px'
+canvasWrapper.style.height = document.body.clientHeight - 100 +'px'
 
 let canvas = document.getElementById('drawing-board')
 let ctx = canvas.getContext('2d')

@@ -3,16 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <title>pixel drawing board</title>
-    <link rel="stylesheet" href="./style.css">
-    <script async src="./main.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <script async src="./js/main.js"></script>
   </head>
   <body>
     <div class="content">
       <div class="drawing-board-wrapper">
-        <div class="curr-grid-position">X: 0, Y: 0</div>
         <canvas id="drawing-board"></canvas>
+        <div class="curr-grid-position">X: 0, Y: 0</div>
       </div>
-      <!-- <div class="tools"></div> -->
+      <div class="misc-wrapper">
+        <div class="drawing-board-setup">
+          <label for="rc">Rows and columns</label>
+          <input type="number" name="rc" value="32" max="100" min="1">
+        </div>
+      </div>
     </div>
   </body>
 </html>

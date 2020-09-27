@@ -1,0 +1,65 @@
+/* pixel drawing board css */
+* {
+  padding: 0;
+  margin: 0;
+}
+html, body {
+  height: 100%;
+  background-color: black;
+  font-size: 16px;
+  font-family: Consolas, "Liberation Mono", Menlo, Monaco, "Source Han Sans CN", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+.content {
+  position: relative;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.drawing-board-wrapper {
+  max-width: 937px;
+  max-height: 937px;
+}
+.curr-grid-position {
+  color: #fff;
+}
+
+#drawing-board {
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+}
+
+.misc-wrapper {
+  position: absolute;
+  height: calc(100% - 40px);
+  width: 260px;
+  background-color: #fff;
+  right: 0;
+  top: 0;
+  padding: 20px;
+}
+
+.drawing-board-setup label {
+  font-weight: 600;
+  font-size: 1.125rem;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+.drawing-board-setup input {
+  width: 100%;
+  height: 25px;
+  line-height: 25px;
+  padding: 5px;
+  font-size: 1rem;
+  border: 1px solid #dfdfdf;
+  border-radius: 5px;
+  background-color: #eee;
+  transition: background-color 0.3s ease;
+  outline: 0;
+}
+
+.drawing-board-setup input:hover {
+  background-color: #fff;
+}
