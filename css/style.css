@@ -5,6 +5,7 @@
 }
 html, body {
   height: 100%;
+  box-sizing: border-box;
   background-color: black;
   font-size: 16px;
   font-family: Consolas, "Liberation Mono", Menlo, Monaco, "Source Han Sans CN", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
@@ -32,34 +33,80 @@ html, body {
 
 .misc-wrapper {
   position: absolute;
-  height: calc(100% - 40px);
+  height: 100%;
   width: 260px;
   background-color: #fff;
   right: 0;
   top: 0;
-  padding: 20px;
 }
 
-.drawing-board-setup label {
+.drawing-board-setup,
+.thickness-setup,
+.color-picker {
+  padding: 10px;
+}
+
+.drawing-board-setup .input-wrapper,
+.thickness-setup .input-wrapper,
+.color-picker .input-wrapper {
+  margin-bottom: 10px;
+}
+
+.drawing-board-setup .input-wrapper:nth-last-child(1),
+.thickness-setup .input-wrapper:nth-last-child(1) {
+  margin-bottom: 0;
+}
+
+.input-wrapper label {
   font-weight: 600;
   font-size: 1.125rem;
   display: inline-block;
   padding-bottom: 10px;
 }
 
-.drawing-board-setup input {
+.input-wrapper input {
+  display: inline-block;
+  border: 3px solid #fff;
+  border-radius: 5px;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+.input-wrapper input[type="number"],
+.input-wrapper input[type="range"] {
   width: 100%;
-  height: 25px;
   line-height: 25px;
   padding: 5px;
   font-size: 1rem;
-  border: 1px solid #dfdfdf;
-  border-radius: 5px;
   background-color: #eee;
   transition: background-color 0.3s ease;
-  outline: 0;
 }
 
-.drawing-board-setup input:hover {
+.input-wrapper input[type="range"] {
+  padding: 0;
+}
+
+.input-wrapper input[type="number"]:hover,
+.input-wrapper input[type="range"]:focus {
   background-color: #fff;
+  border: 3px solid #dfdfdf;
+}
+
+.color-picker ul {
+  font-size: 0;
+}
+.color-picker ul li {
+  display: inline;
+  list-style-type: none;
+}
+
+.color-picker ul li a {
+  display: inline-block;
+  width: 6.66666667%;
+  height: 15px;
+  box-sizing: border-box;
+}
+
+.color-picker ul li a:hover {
+  transform: scale(1.5);
 }
