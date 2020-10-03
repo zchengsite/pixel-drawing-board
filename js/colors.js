@@ -4,9 +4,26 @@ let colorsList = ['#faddd1', '#fad3d1', '#fad1e6', '#e5d1fa', '#d4d1fa', '#d1e3f
 
 let colorsWrapper = document.getElementById('color-groups')
 
+let currentInputColor = document.getElementById('current-color')
+
 for(let i of colorsList) {
-  let colorItemStr = `<a href="javascript:void(0)" style="background: ${i};"></a>`
+  let colorItemStr = `<a id="color-${i}" name="${i}" href="javascript:void(0)" style="background: ${i};"></a>`
   const tempWrapper = document.createElement('li')
   tempWrapper.innerHTML = colorItemStr
   colorsWrapper.append(tempWrapper)
+
+  let colorItem = document.getElementById(`color-${i}`)
+  colorItem.addEventListener('click', changeDrawColor, false)
 }
+
+function changeDrawColor(e) {
+  if (e.type === 'click') {
+    currentInputColor.value = e.target.name
+    drawingColor = e.target.name
+  } else {
+    currentInputColor.value = e.target.value
+    drawingColor = e.target.value
+  }
+}
+
+currentInputColor.addEventListener('change', changeDrawColor, false)
