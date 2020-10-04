@@ -8,6 +8,9 @@ let wh = 1
 // 鼠标选中hover
 let hoverColor = 'rgb(56 56 56 / 40%)'
 
+let lastAxisX = undefined
+let lastAxisY = undefined
+
 // 绘画状态
 let drawing = false
 
@@ -33,14 +36,11 @@ canvasWrapper.style.height = document.body.clientHeight - 100 +'px'
 let canvas = document.getElementById('drawing-board')
 let ctx = canvas.getContext('2d')
 
-// 设置canvas宽高
-canvas.setAttribute('width', gridNum)
-canvas.setAttribute('height', gridNum)
-
 // 生成初始黑白网格列表
 function generateInitialGrids () {
   // 当前网格序号 - 用来计数 - 判断奇和偶。奇：#d9d9d9；偶：#fff
   let num = 0
+  initGridList = []
 
   for (let i = 0; i < gridNum; i++) {
     for (let j = 0; j < gridNum; j++) {
@@ -81,6 +81,9 @@ function generateInitialGrids () {
 
 // 初始化画板
 function initDrawingBoard() {
+  // 设置canvas宽高
+  canvas.setAttribute('width', gridNum)
+  canvas.setAttribute('height', gridNum)
   for (let grid of initGridList) {
     ctx.beginPath()
     ctx.fillStyle = grid.color
@@ -162,8 +165,11 @@ function draw(x, y, c, e) {
 
       ctx.beginPath()
       ctx.fillStyle = c
+      // ctx.moveTo(lastAxisX , lastAxisY)
+      // ctx.lineTo(axisX, axisY)
       ctx.fillRect(axisX , axisY, wh, wh)
-      ctx.closePath()
+      // lastAxisX = axisX
+      // lastAxisY = axisY
     }
   }
 }
