@@ -8,8 +8,8 @@ let wh = 1
 // 鼠标选中hover
 let hoverColor = 'rgb(56 56 56 / 40%)'
 
-let lastAxisX = undefined
-let lastAxisY = undefined
+// let lastAxisX = undefined
+// let lastAxisY = undefined
 
 // 绘画状态
 let drawing = false
@@ -72,7 +72,8 @@ function generateInitialGrids () {
           x: gridLayoutWH / gridNum * j,
           y: gridLayoutWH / gridNum * i,
           wh: gridLayoutWH / gridNum,
-          color: defaultGridColor
+          color: defaultGridColor,
+          status: 0
         }
       )
     }
@@ -149,6 +150,7 @@ function draw(x, y, c, e) {
 
       if (e === 'leftClick') {
         initGridList[i].color = c
+        initGridList[i].status = 1
       } else if (e === 'rightClick') {
         // 当前点击网格行数 - 奇或偶
         if (Math.ceil(axisY + 1) % 2 === 0) {
@@ -161,6 +163,7 @@ function draw(x, y, c, e) {
           }
         }
         initGridList[i].color = c
+        initGridList[i].status = 0
       }
 
       ctx.beginPath()

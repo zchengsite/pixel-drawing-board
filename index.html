@@ -4,9 +4,8 @@
     <meta charset="UTF-8" />
     <title>pixel drawing board</title>
     <link rel="stylesheet" href="./css/style.css">
-    <script async src="./js/main.js"></script>
-    <script async src="./js/colors.js"></script>
-    <script async src="./js/size.js"></script>
+    <script defer src="./js/main.js"></script>
+    <script defer src="./js/tools.js"></script>
   </head>
   <body>
     <div class="content">
@@ -20,17 +19,7 @@
             <label for="rows">Rows and Columns</label>
             <input type="number" id="current-size" name="rows" value="32" placeholder="The number of rows and columns" max="100" min="1">
           </div>
-          <!-- <div class="input-wrapper">
-            <label for="columns">Columns</label>
-            <input type="number" name="columns" value="32" placeholder="Number of grids per column" max="100" min="1">
-          </div> -->
         </div>
-        <!-- <div class="thickness-setup">
-          <div class="input-wrapper">
-            <label for="thickness">Thickness</label>
-            <input type="range" name="thickness" value="1" placeholder="Thickness" max="100" min="1">
-          </div>
-        </div> -->
         <div class="color-picker">
           <div class="input-wrapper">
             <label for="favcolor">Colors</label>
@@ -40,6 +29,17 @@
             <ul class="color-groups" id="color-groups">
             </ul>
           </div>
+        </div>
+        <div class="preview">
+          <div class="title">Preview</div>
+          <div class="preview-content">
+            <img id="preview-img" src="" alt="preview">
+          </div>
+        </div>
+        <div class="downloads">
+          <div class="title">Downloads</div>
+          <button type="button" class="download-btns" id="saveToImage">Save as image</button>
+          <button type="button" class="download-btns" id="saveToBoxShadow">Save as css box-shadow</button>
         </div>
       </div>
     </div>
