@@ -109,8 +109,6 @@ function saveToImages() {
     status: item.status
   }))
 
-  console.log(tempInitGridList)
-
   for (let grid of tempInitGridList) {
     tempCtxPreview.beginPath()
     if (grid.status === 0) {
@@ -123,8 +121,6 @@ function saveToImages() {
 
   let MIME_TYPE = "image/png"
   let imgURL = tempCanvasPreviewEl.toDataURL(MIME_TYPE, 1.0)
-
-  console.log(imgURL)
 
   let dlLink = document.createElement('a')
   dlLink.download = 'pixel-picture.png'
