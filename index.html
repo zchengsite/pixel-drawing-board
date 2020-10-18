@@ -38,8 +38,22 @@
         </div>
         <div class="downloads">
           <div class="title">Downloads</div>
-          <button type="button" class="download-btns" id="saveToImage">Save as image</button>
-          <button type="button" class="download-btns" id="saveToBoxShadow">Save as css box-shadow</button>
+          <div class="downloads-content">
+            <div class="save-as-image-wrapper">
+              <label for="image-size">Save as image</label>
+              <div class="save-as-image-wrapper-content">
+                <select id="imageSize" name="image-size" placeholder="select image size"></select>
+                <button type="button" class="download-btns" id="saveToImage">Save</button>
+              </div>
+            </div>
+            <div class="save-as-box-shadow-wrapper">
+              <label for="image-size">Save as css box-shadow</label>
+              <div class="save-as-box-shadow-wrapper-content">
+                <select id="boxShadowSize" name="image-size" placeholder="select image size"></select>
+                <button type="button" class="download-btns" id="saveToBoxShadow">Save</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

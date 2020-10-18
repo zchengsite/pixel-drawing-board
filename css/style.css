@@ -29,6 +29,7 @@ html, body {
   width: 100%;
   height: 100%;
   image-rendering: pixelated;
+  border: 0;
 }
 
 .misc-wrapper {
@@ -48,11 +49,11 @@ html, body {
   padding: 10px;
 }
 
-.drawing-board-setup .input-wrapper,
+/* .drawing-board-setup .input-wrapper,
 .thickness-setup .input-wrapper,
 .color-picker .input-wrapper {
   margin-bottom: 10px;
-}
+} */
 
 .drawing-board-setup .input-wrapper:nth-last-child(1),
 .thickness-setup .input-wrapper:nth-last-child(1) {
@@ -77,7 +78,7 @@ html, body {
 .input-wrapper input[type="number"],
 .input-wrapper input[type="range"] {
   width: 100%;
-  line-height: 25px;
+  height: 35px;
   padding: 5px;
   font-size: 1rem;
   background-color: #eee;
@@ -121,8 +122,10 @@ html, body {
 }
 
 .download-btns {
-  padding: 10px;
+  padding: 5px;
   border-radius: 5px;
+  font-size: 1rem;
+  height: 35px;
   border: 3px solid #fff;
   outline: 0;
   box-sizing: border-box;
@@ -150,4 +153,44 @@ html, body {
   height: 140px;
   width: 140px;
   image-rendering: pixelated;
+}
+
+.save-as-image-wrapper {
+  padding-bottom: 10px;
+}
+
+.save-as-image-wrapper label,
+.save-as-box-shadow-wrapper label {
+  font-weight: 600;
+  font-size: 1rem;
+  display: inline-block;
+  padding-bottom: 6px;
+}
+
+.save-as-image-wrapper select,
+.save-as-box-shadow-wrapper select {
+  display: inline-block;
+  border: 3px solid #fff;
+  border-radius: 5px;
+  outline: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 35px;
+  padding: 5px;
+  font-size: 1rem;
+  background-color: #eee;
+  transition: background-color 0.3s ease;
+}
+
+.save-as-image-wrapper select:hover,
+.save-as-box-shadow-wrapper select:hover {
+  background-color: #fff;
+  border: 3px solid #dfdfdf;
+}
+
+.save-as-image-wrapper-content,
+.save-as-box-shadow-wrapper-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

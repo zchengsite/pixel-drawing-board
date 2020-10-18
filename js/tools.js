@@ -11,6 +11,7 @@ function changeDrawSize(e) {
     generateInitialGrids()
     initDrawingBoard()
     canvasPreview()
+    initSizeOptions()
   }
 }
 
@@ -88,10 +89,33 @@ canvas.addEventListener('mousedown', () => {
 
 canvasPreview()
 
+// 初始化导出图片或box-shadow尺寸选项
+function initSizeOptions() {
+  let imageSizeSelect = document.getElementById('imageSize')
+  let boxShadowSizeSelect = document.getElementById('boxShadowSize')
+  imageSizeSelect.innerHTML = ""
+  boxShadowSizeSelect.innerHTML = ""
+  let WH = gridNum
+  let num = 20
+  for (let i = 1; i < num + 1; i++) {
+    let optionStr = `${i*WH} x ${i*WH}`
+    let imgOption = document.createElement('option')
+    let boxShdowOption = document.createElement('option')
+    imgOption.setAttribute('value', i*WH)
+    imgOption.innerHTML = optionStr
+    imageSizeSelect.append(imgOption)
+    boxShdowOption.setAttribute('value', i*WH)
+    boxShdowOption.innerHTML = optionStr
+    boxShadowSizeSelect.append(boxShdowOption)
+  }
+}
+
+initSizeOptions()
 
 // 保存
 function saveToImages() {
-  let imgWH = 256
+  let imageSizeSelect = document.getElementById('imageSize')
+  let imgWH = imageSizeSelect.value
 
   let tempCanvasPreviewEl = document.createElement('canvas')
   let tempCtxPreview = tempCanvasPreviewEl.getContext('2d')
