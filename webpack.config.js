@@ -1,8 +1,10 @@
 // webpack.config.js
 const path = require('path')
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
+  mode: 'development',
   entry: { 
     app: ['./src/index.js']
   },
@@ -11,15 +13,23 @@ module.exports = {
     path: path.resolve(__dirname, 'dist')
   },
   devServer: {
+    historyApiFallback: true,
     contentBase: path.join(__dirname, 'dist'),
+    open: true,
     compress: true,
+    hot: true,
     port: 8080
   },
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: ['babel-loader']
+      },
+      {
+        test: /\.(scss|css)$/,
+        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
@@ -31,12 +41,16 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Webpack Output Management',
       template: "./index.html"
+    }),
+    // Only update what has changed on hot reload
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.ProvidePlugin({
+      Buffer: ['buffer', 'Buffer'],
     })
   ],
   resolve: {
     fallback: {
       "assert": false,
-      "buffer": false,
       "console": false,
       "constants": false,
       "crypto": false,
