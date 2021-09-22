@@ -39,6 +39,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "clipboard": "^2.0.8",
     "request": "^2.79.0"
   }
 }

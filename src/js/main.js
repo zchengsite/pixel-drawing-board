@@ -1,4 +1,4 @@
-const { LibManifestPlugin } = require("webpack")
+import Clipboard from 'clipboard'
 
 // main.js
 
@@ -155,6 +155,7 @@ function draw(x, y, c, e) {
       if (e === 'leftClick') {
         initGridList[i].color = c
         initGridList[i].status = 1
+        console.warn('initGridList', initGridList)
       } else if (e === 'rightClick') {
         // 当前点击网格行数 - 奇或偶
         if (Math.ceil(axisY + 1) % 2 === 0) {
@@ -305,24 +306,18 @@ canvas.addEventListener('mousedown', () => {
 
 canvasPreview()
 
-// 初始化导出图片或box-shadow尺寸选项
+// 初始化导出图片尺寸选项
 function initSizeOptions() {
   let imageSizeSelect = document.getElementById('imageSize')
-  let boxShadowSizeSelect = document.getElementById('boxShadowSize')
   imageSizeSelect.innerHTML = ""
-  boxShadowSizeSelect.innerHTML = ""
   let WH = gridNum
   let num = 20
   for (let i = 1; i < num + 1; i++) {
     let optionStr = `${i*WH} x ${i*WH}`
     let imgOption = document.createElement('option')
-    let boxShdowOption = document.createElement('option')
     imgOption.setAttribute('value', i*WH)
     imgOption.innerHTML = optionStr
     imageSizeSelect.append(imgOption)
-    boxShdowOption.setAttribute('value', i*WH)
-    boxShdowOption.innerHTML = optionStr
-    boxShadowSizeSelect.append(boxShdowOption)
   }
 }
 
@@ -374,3 +369,29 @@ function saveToImages() {
 
 let saveToImageBtn = document.getElementById('saveToImage')
 saveToImageBtn.addEventListener('click', saveToImages, false)
+
+function saveToBoxShadows () {
+  // box-shadow 每个像素块宽高
+  const preGridSize = document.getElementById('pre-grid-size')
+  const tempInitGridList = JSON.parse(JSON.stringify(initGridList))
+  let result = ''
+  const wh = preGridSize.value
+  const transparentColor = '#00000000'
+  for (let i = 0; i < tempInitGridList.length; i++) {
+    if (tempInitGridList[i].status === 0) {
+      tempInitGridList[i].color = '#00000000'
+    }
+    const rowNum = Math.ceil((i + 1) / gridNum)
+    const columnNum = (i + 1) % gridNum === 0 ? gridNum : (i + 1) % gridNum
+    result += `${wh * columnNum}px ${wh * rowNum}px ${tempInitGridList[i].color}, `
+  }
+  // console.warn('result', result)
+  const boxShadowBtnEl = document.querySelector('.box-shadow-btns')
+  boxShadowBtnEl.setAttribute('data-clipboard-text', result)
+  new Clipboard('.box-shadow-btns')
+  alert('已复制到剪切板，请在需要使用的地方粘贴！')
+  // console.warn('btnCopy', btnCopy)
+}
+
+const saveToBoxShadowBtn = document.getElementById('saveToBoxShadow')
+saveToBoxShadowBtn.addEventListener('click', saveToBoxShadows, false)

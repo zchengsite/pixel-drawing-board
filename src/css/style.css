@@ -145,7 +145,7 @@ html, body {
   padding-bottom: 10px;
 }
 
-.download-btns {
+.download-btns, .box-shadow-btns {
   padding: 5px;
   border-radius: 5px;
   font-size: 1rem;
@@ -157,7 +157,7 @@ html, body {
   transition: background-color 0.3s ease;
 }
 
-.download-btns:hover {
+.download-btns:hover, .box-shadow-btns:hover {
   background-color: #fff;
   border: 3px solid #dfdfdf;
 }
