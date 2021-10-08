@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <title>pixel drawing board</title>
   </head>
-  <body>
-    <div class="app-content">
+  <body onload="load()">
+    <!-- <div class="app-content">
       <div class="misc-wrapper-left">
         <div class="curr-grid-position">X: 0, Y: 0</div>
       </div>
@@ -15,13 +15,15 @@
         </div>
       </div>
       <div class="misc-wrapper-right">
-        <div class="drawing-board-setup">
+
+        <div class="wrapper-right-item drawing-board-setup">
           <div class="input-wrapper">
             <label for="rows">Rows and Columns</label>
             <input type="number" id="current-size" name="rows" value="32" placeholder="The number of rows and columns" max="100" min="1">
           </div>
         </div>
-        <div class="color-picker">
+
+        <div class="wrapper-right-item color-picker">
           <div class="input-wrapper">
             <label for="favcolor">Colors</label>
             <input type="color" id="current-color" name="favcolor" value="#000000" placeholder="Colors">
@@ -31,13 +33,15 @@
             </ul>
           </div>
         </div>
-        <div class="preview">
+
+        <div class="wrapper-right-item preview">
           <div class="title">Preview</div>
           <div class="preview-content">
             <img id="preview-img" src="" alt="preview">
           </div>
         </div>
-        <div class="downloads">
+
+        <div class="wrapper-right-item downloads">
           <div class="title">Downloads</div>
           <div class="downloads-content">
             <div class="save-as-image-wrapper">
@@ -56,7 +60,14 @@
             </div>
           </div>
         </div>
+
       </div>
-    </div>
+    </div> -->
+    <div id="pixel-drawing-demo"></div>
   </body>
+  <script>
+    function load() {
+      const board = x_pixeldrawing('#pixel-drawing-demo', {})
+    }
+  </script>
 </html>

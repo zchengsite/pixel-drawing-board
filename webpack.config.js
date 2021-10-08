@@ -2,10 +2,11 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
 module.exports = {
   mode: 'development',
-  entry: { 
+  entry: {
     app: ['./src/index.js']
   },
   output: {
@@ -15,10 +16,11 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     contentBase: path.join(__dirname, 'dist'),
-    open: true,
+    open: false,
     compress: true,
     hot: true,
-    port: 8080
+    port: 8080,
+    quiet: true
   },
   module: {
     rules: [
@@ -34,53 +36,21 @@ module.exports = {
       {
         test: /\.(png|svg|jpg|gif)$/,
         use: ['file-loader']
-      },
+      }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Webpack Output Management',
-      template: "./index.html"
+      title: 'pixel-drawing-board',
+      template: './index.html'
+    }),
+    new FriendlyErrorsWebpackPlugin({
+      compilationSuccessInfo: {
+        messages: [`Your application is running here: http://localhost:8080`]
+      },
+      clearConsole: true
     }),
     // Only update what has changed on hot reload
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.ProvidePlugin({
-      Buffer: ['buffer', 'Buffer'],
-    })
-  ],
-  resolve: {
-    fallback: {
-      "assert": false,
-      "console": false,
-      "constants": false,
-      "crypto": false,
-      "domain": false,
-      "events": false,
-      "http": false,
-      "https": false,
-      "os": false, 
-      "path": false,
-      "punycode": false,
-      "process": false,
-      "querystring": false,
-      "stream": false,
-      "_stream_duplex": false,
-      "_stream_passthrough": false,
-      "_stream_readable": false,
-      "_stream_transform": false,
-      "_stream_writable": false,
-      "string_decoder": false,
-      "sys": false,
-      "timers": false,
-      "tty": false,
-      "url": false,
-      "util": false,
-      "vm": false,
-      "zlib": false,
-      "fs": false,
-      "worker_threads": false,
-      "child_process": false,
-      "pnpapi": false
-    }
-  }
+    new webpack.HotModuleReplacementPlugin()
+  ]
 }

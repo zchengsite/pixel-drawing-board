@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack serve",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "webpack",
+    "lint": "eslint src/**/*.js --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -23,10 +24,14 @@
     "@babel/core": "^7.12.13",
     "@babel/plugin-proposal-class-properties": "^7.12.13",
     "@babel/preset-env": "^7.12.13",
+    "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "buffer": "^6.0.3",
     "css-loader": "^5.0.1",
+    "eslint": "^7.32.0",
+    "eslint-plugin-import": "^2.24.2",
     "file-loader": "^6.2.0",
+    "friendly-errors-webpack-plugin": "^1.7.0",
     "html-webpack-plugin": "^4.5.0",
     "node-sass": "^5.0.0",
     "postcss-loader": "^5.0.0",
@@ -39,7 +44,6 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "clipboard": "^2.0.8",
-    "request": "^2.79.0"
+    "clipboard": "^2.0.8"
   }
 }
