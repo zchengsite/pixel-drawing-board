@@ -3,7 +3,18 @@ A canvas based pixel drawing board
 
 ## Installation
 
-### using npm
+### CDN
+
+```html
+<script src="https://unpkg.com/pixel-drawing-board@0.0.4/dist/pixeldraw.js"></script>
+
+<div id="pixel-drawing-demo"></div>
+
+<script>
+  x_pixeldrawing('#pixel-drawing-demo', {})
+</script>
+```
+### NPM
 
 ```bash
 # install dependencies

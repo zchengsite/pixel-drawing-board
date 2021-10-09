@@ -1,8 +1,12 @@
 {
   "name": "pixel-drawing-board",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A Canvas based pixel drawing board",
   "main": "src/index.js",
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "start": "webpack serve",
     "build": "webpack",
