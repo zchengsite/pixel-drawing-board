@@ -1,5 +1,5 @@
 const cssPrefix = 'pixel-drawing'
-const gridLayoutWH = document.body.clientHeight
+const gridLayoutWH = document.documentElement.clientHeight
 const gridContentWH = gridLayoutWH - 100
 const gridNum = 8
 const wh = 1

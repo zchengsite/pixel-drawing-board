@@ -1,4 +1,4 @@
-import { gridContentWH, gridNum } from '../js/config'
+import { gridContentWH, gridNum } from '../config'
 
 const grids = []
 

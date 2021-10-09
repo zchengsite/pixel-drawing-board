@@ -1,6 +1,6 @@
 
 import { h } from './dom'
-import { cssPrefix, gridContentWH } from '../js/config'
+import { cssPrefix, gridContentWH } from '../config'
 import { Pixel } from './pixel'
 
 class Board {

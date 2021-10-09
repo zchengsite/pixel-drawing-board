@@ -1,4 +1,4 @@
-import { gridContentWH, gridNum, wh, hoverColor, drawingColor } from '../js/config'
+import { gridContentWH, gridNum, wh, hoverColor, drawingColor } from '../config'
 import { initGrids, fillGrids } from '../core/grids'
 
 let drawing = false
