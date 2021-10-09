@@ -1,14 +1,21 @@
 # pixel-drawing-board
-A Canvas based pixel drawing board
+A canvas based pixel drawing board
 
-## Build Setup
+## Installation
+
+### using npm
+
 ```bash
 # install dependencies
-$ npm install
+$ npm install pixel-drawing-board
+```
 
-# serve with hot reload at localhost:8080
-$ npm run start
+```html
+<div id="pixel-drawing-demo"></div>
+```
 
-# build for production and launch server
-$ npm run build
+```js
+import PixelDrawing from 'pixel-drawing-board'
+
+const draw = new PixelDrawing('#pixel-drawing-demo', {})
 ```

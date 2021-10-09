@@ -1,6 +1,6 @@
 {
   "name": "pixel-drawing-board",
-  "version": "1.0.0",
+  "version": "0.0.3",
   "description": "A Canvas based pixel drawing board",
   "main": "src/index.js",
   "scripts": {
@@ -13,7 +13,11 @@
     "type": "git",
     "url": "git+https://github.com/zchengsite/pixel-drawing-board.git"
   },
-  "keywords": [],
+  "keywords": [
+    "javascript",
+    "pixel-drawing-board",
+    "canvas"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
