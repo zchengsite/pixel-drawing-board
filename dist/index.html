@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>pixel drawing board</title>
+  </head>
+  <body>
+    <div class="app-content">
+      <div class="misc-wrapper-left">
+        <div class="curr-grid-position">X: 0, Y: 0</div>
+      </div>
+      <div class="misc-wrapper-center">
+        <div class="drawing-board-wrapper">
+          <canvas id="drawing-board"></canvas>
+        </div>
+      </div>
+      <div class="misc-wrapper-right">
+        <div class="drawing-board-setup">
+          <div class="input-wrapper">
+            <label for="rows">Rows and Columns</label>
+            <input type="number" id="current-size" name="rows" value="32" placeholder="The number of rows and columns" max="100" min="1">
+          </div>
+        </div>
+        <div class="color-picker">
+          <div class="input-wrapper">
+            <label for="favcolor">Colors</label>
+            <input type="color" id="current-color" name="favcolor" value="#000000" placeholder="Colors">
+          </div>
+          <div class="color-board">
+            <ul class="color-groups" id="color-groups">
+            </ul>
+          </div>
+        </div>
+        <div class="preview">
+          <div class="title">Preview</div>
+          <div class="preview-content">
+            <img id="preview-img" src="" alt="preview">
+          </div>
+        </div>
+        <div class="downloads">
+          <div class="title">Downloads</div>
+          <div class="downloads-content">
+            <div class="save-as-image-wrapper">
+              <label for="image-size">Save as image</label>
+              <div class="save-as-image-wrapper-content">
+                <select id="imageSize" name="image-size" placeholder="select image size"></select>
+                <button type="button" class="download-btns" id="saveToImage">Save</button>
+              </div>
+            </div>
+            <div class="save-as-box-shadow-wrapper">
+              <label for="image-size">Save as css box-shadow</label>
+              <div class="save-as-box-shadow-wrapper-content input-wrapper">
+                <input type="number" id="pre-grid-size" name="rows" value="5" placeholder="Each width" max="20" min="1">
+                <button type="button" data-clipboard-text="" class="box-shadow-btns" id="saveToBoxShadow">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <script src="app.js"></script></body>
+</html>
