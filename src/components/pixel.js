@@ -1,25 +1,32 @@
 import { gridContentWH, gridNum, wh, hoverColor, drawingColor } from '../config'
 import { initGrids, fillGrids } from '../core/grids'
+import { notify } from '../core/notify'
 
 let drawing = false
+let currentDrawColor = drawingColor
+
+notify.on('changeColor', (payload) => {
+  console.warn('changeColor', payload)
+  currentDrawColor = payload
+})
 
 // 初始化画板
-function initDrawingBoard() {
-  const { ctx } = this
-  for (const grid of initGrids()) {
+function initDrawingBoard(isReset) {
+  const { ctx, customData } = this
+  for (const grid of initGrids(customData, isReset)) {
     fillGrids(
       ctx,
-      grid.x / (gridContentWH / gridNum),
-      grid.y / (gridContentWH / gridNum),
+      grid.x / (gridContentWH / (customData || gridNum)),
+      grid.y / (gridContentWH / (customData || gridNum)),
       grid.color,
       wh
     )
   }
 }
 
-// 绘画中
+// 绘制
 function draw(e) {
-  const { ctx } = this
+  const { ctx, customData } = this
   const x = e.offsetX
   const y = e.offsetY
   let color = hoverColor
@@ -28,12 +35,12 @@ function draw(e) {
       (y >= grid.y) &&
       (x < grid.x + grid.wh) &&
       (y < grid.y + grid.wh)) {
-      const axisX = grid.x / (gridContentWH / gridNum)
-      const axisY = grid.y / (gridContentWH / gridNum)
+      const axisX = grid.x / (gridContentWH / (customData || gridNum))
+      const axisY = grid.y / (gridContentWH / (customData || gridNum))
       if (!drawing) {
         clearHoverGrids.call(this)
       } else if (e.buttons === 1) {
-        color = grid.color = drawingColor
+        color = grid.color = currentDrawColor
         grid.status = 1
       } else if (e.buttons === 2) {
         color = '#ffffff'
@@ -60,9 +67,9 @@ function draw(e) {
 
 // 清除上一帧鼠标悬停效果
 function clearHoverGrids() {
-  const { ctx } = this
+  const { ctx, customData } = this
   if (!drawing) {
-    ctx.clearRect(0, 0, gridNum, gridNum)
+    ctx.clearRect(0, 0, customData || gridNum, customData || gridNum)
     initDrawingBoard.call(this)
   }
 }
@@ -87,13 +94,17 @@ class Pixel {
     this.target = target
     this.el = target.el
     this.ctx = this.el.getContext('2d')
-    this.resize()
-    initDrawingBoard.call(this)
     initEvents.call(this)
   }
+  initData(data) {
+    const { value, type } = data
+    this.customData = value
+    this.resize()
+    initDrawingBoard.call(this, !!(type && type === 'changeInputSize'))
+  }
   resize() {
-    this.el.width = gridNum
-    this.el.height = gridNum
+    this.el.width = this.customData || gridNum
+    this.el.height = this.customData || gridNum
   }
   // 展示坐标
   showCoordinates() {

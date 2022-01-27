@@ -51,6 +51,24 @@ class Dom {
     })
     return this
   }
+  attr(name, value) {
+    this.el.setAttribute(name, value)
+    return this
+  }
+  attrs(...arrs) {
+    arrs.forEach(arr => this.attr(arr[0], arr[1]))
+    return this
+  }
+  html(arg) {
+    if (arg !== undefined) {
+      this.el.innerHTML = arg
+      return this
+    }
+    return this.el.innerHTML
+  }
+  removeChild(el) {
+    this.el.removeChild(el)
+  }
 }
 
 const h = (tag, className = '') => new Dom(tag, className)

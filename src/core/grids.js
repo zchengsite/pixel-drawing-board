@@ -1,20 +1,20 @@
 import { gridContentWH, gridNum } from '../config'
 
-const grids = []
+let grids = []
 
-// 生成初始网格
-function initGrids() {
+function initGrids(gridNumDefault = gridNum, resetGrids = false) {
   let color = '#ffffff'
-  // 当前网格序号 - 用来计数 - 判断奇和偶。奇：#d9d9d9；偶：#ffffff
   let num = 0
-  if (grids.length !== 0) {
+  if (grids.length !== 0 && !resetGrids) {
     return grids
   }
 
-  for (let i = 0; i < gridNum; i++) {
-    for (let j = 0; j < gridNum; j++) {
+  grids = resetGrids ? [] : grids
+
+  for (let i = 0; i < gridNumDefault; i++) {
+    for (let j = 0; j < gridNumDefault; j++) {
       num++
-      if (gridNum % 2 === 0) {
+      if (gridNumDefault % 2 === 0) {
         if (i % 2 === 0) {
           if (num % 2 === 0) {
             color = '#ffffff'
@@ -38,9 +38,9 @@ function initGrids() {
 
       grids.push(
         {
-          x: gridContentWH / gridNum * j,
-          y: gridContentWH / gridNum * i,
-          wh: gridContentWH / gridNum,
+          x: gridContentWH / gridNumDefault * j,
+          y: gridContentWH / gridNumDefault * i,
+          wh: gridContentWH / gridNumDefault,
           color,
           status: 0
         }
@@ -50,7 +50,6 @@ function initGrids() {
   return grids
 }
 
-// 网格着色
 function fillGrids(ctx, x, y, c, wh) {
   ctx.beginPath()
   ctx.fillStyle = c

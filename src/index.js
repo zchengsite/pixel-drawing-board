@@ -14,9 +14,11 @@ class PixelDrawing {
     // create root element => pixel-drawing
     const root = h('div', cssPrefix)
       .on('contextmenu', evt => evt.preventDefault())
+    // init root element height
     this.resize(root.el)
     targetEl.appendChild(root.el)
     this.board = new Board(root)
+    this.board.initData()
   }
   resize(el) {
     el.style.height = `${gridLayoutWH}px`
