@@ -9,10 +9,10 @@ class Notify {
     }
   }
   on(name, callback) {
-    if (this.notifyMap[name]) {
-      console.warn(name, '已存在')
-      return
-    }
+    // if (this.notifyMap[name]) {
+    //   console.warn(name, '已存在')
+    //   return
+    // }
     const callbacks = (this.notifyMap[name] = this.notifyMap[name] || [])
     if (callbacks.indexOf(callback) === -1) {
       callbacks.push(callback)

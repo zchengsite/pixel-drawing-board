@@ -58,9 +58,7 @@ function draw(e) {
         grid.status = 0
       }
 
-      ctx.beginPath()
-      ctx.fillStyle = color
-      ctx.fillRect(axisX, axisY, wh, wh)
+      fillGrids(ctx, axisX, axisY, color, wh)
     }
   }
 }
@@ -72,6 +70,14 @@ function clearHoverGrids() {
     ctx.clearRect(0, 0, customData || gridNum, customData || gridNum)
     initDrawingBoard.call(this)
   }
+}
+
+// 绘画预览（缩略图）
+function previewDraw() {
+  const { el } = this
+  const MIME_TYPE = 'image/png'
+  const imgURL = el.toDataURL(MIME_TYPE, 1.0)
+  notify.emit('changePreview', imgURL)
 }
 
 function initEvents() {
@@ -86,6 +92,7 @@ function initEvents() {
     draw.call(this, evt)
   }).on('mouseup', (evt) => {
     drawing = false
+    previewDraw.call(this)
   })
 }
 
